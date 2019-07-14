@@ -19,7 +19,10 @@ mongoose.connect(db, { useNewUrlParser: true }).then(() => {
   console.log('MongoDB connected')
 }).catch((err) => {
   console.log(err)
-})
+});
+
+// ROUTES
+app.use('/api/notes', require('./routes/api/notes'));
 
 // PORT
 const port = process.env.PORT || 5000;
