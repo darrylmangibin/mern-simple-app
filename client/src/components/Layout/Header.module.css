@@ -1,0 +1,16 @@
+.header {
+  background: #43799c;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.header h1 {
+  font-weight: 700;
+  margin: 0;
+  font-size: 32px;
+}
+
+.header h5 {
+  margin: 0;
+  font-size: 18px;
+}

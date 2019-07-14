@@ -1,0 +1,29 @@
+.inputContainer {
+  display: flex;
+  position: relative;
+  padding: 20px 0;
+}
+
+.input {
+  width: 100%;
+  margin: 20px 0;
+  height: 40px;
+  padding: 4px 8px;
+  outline:none;
+}
+
+.input:focus ~ label {
+  top: 25%;
+  font-size: 14px !important; 
+}
+
+.textarea {
+  width: 100%;
+  min-height: 150px;
+  height: 100%;
+  padding: 4px 8px;
+}
+
+.textarea:focus ~ label {
+  top: 0;
+}
