@@ -5,6 +5,8 @@
   padding: 16px;
   margin: 16px 0;
   transition: all .3s;
+  text-decoration: none !important;
+  color: inherit;
 }
 
 .note:hover {
