@@ -4,7 +4,15 @@ import classes from './EditForm.module.css';
 import Label from '../../common/label';
 import Button from '../../common/button';
 
+import { deleteNote } from '../../actions/notes';
+import { connect } from 'react-redux';
+
 class EditForm extends React.Component {
+
+  componentDidMount() {
+    console.log(window.location)
+  }
+
   render() {
     return (
       <div className="container">
@@ -23,7 +31,7 @@ class EditForm extends React.Component {
             title="Enter note text"
           />
         </div>
-        <Button 
+        <Button
           title="Remove note"
           color="#fff"
           background="#888888"
@@ -33,4 +41,8 @@ class EditForm extends React.Component {
   }
 }
 
-export default EditForm;
+const mapDispatchToProps = dispatch => ({
+  deleteNote: (id) => dispatch(deleteNote(id))
+})
+
+export default connect(null, mapDispatchToProps)(EditForm);

@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './Notes.module.css';
-import { getNotes } from '../../actions/notes';
+import { getNotes, addNote } from '../../actions/notes';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 import Note from './Note';
 import Button from '../../common/button'
@@ -11,6 +12,19 @@ class Notes extends React.Component {
   componentDidMount() {
     const { getNotes } = this.props;
     getNotes()
+  }
+
+  handleAddNote = () => {
+    const note = {
+      title: '',
+      body: '',
+      updatedAt: Date.now(),
+      createdAt: Date.now()
+    };
+    this.props.addNote(note, (id) => {
+      this.props.history.push(`/${id}`)
+    });
+
   }
 
   renderNotes = () => {
@@ -33,6 +47,7 @@ class Notes extends React.Component {
       <div className="container">
         {this.renderNotes()}
         <Button
+          handleClick={this.handleAddNote}
           title="Create Note"
           background="#43799c"
           color="#fff"
@@ -43,11 +58,12 @@ class Notes extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getNotes: () => dispatch(getNotes())
+  getNotes: () => dispatch(getNotes()),
+  addNote: (data, cb) => dispatch(addNote(data, cb))
 })
 
 const mapStateToProps = state => ({
   notes: state.notes.notes
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Notes);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Notes));
