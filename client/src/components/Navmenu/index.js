@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import timeStamp from '../../actions/timeStamp'
 
 import Actions from '../common/Actions';
 import Container from '../common/Container';
 
-const Navmenu = () => {
+const Navmenu = (props) => {
+  console.log(props)
   return (
     <Actions>
       <Container>
@@ -13,7 +15,7 @@ const Navmenu = () => {
             to="/"
           >Home</NavLink>
           <p>
-            Last edited a few seconds ago
+            {!props.note ? 'LOADING' : timeStamp(props.note.updatedAt)}
           </p>
         </div>
       </Container>
