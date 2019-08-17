@@ -14,11 +14,14 @@ app.use(bodyParser.json());
 
 // MONGODB CONFIGURATION
 const db = process.env.DATABASE;
-mongoose.connect(db, { useNewUrlParser: true }).then(() => {
+mongoose.connect(db, { useNewUrlParser: true, useFindAndModify: false }).then(() => {
   console.log('MongoDB connected')
 }).catch(() => {
   console.log('Connection failed')
 })
+
+// ROUTES
+app.use('/api/notes', require('./routes/api/notes'));
 
 // PORT
 const port = process.env.PORT || 5000;
