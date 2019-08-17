@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 
 import './App.css';
 
+import Root from './Root';
 import App from './App';
 
 ReactDOM.render(
-  <App />,
+  <Root>
+    <App />
+  </Root>,
   document.querySelector('#root')
 )
